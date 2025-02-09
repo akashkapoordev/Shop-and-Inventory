@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ShopService 
 {
-    [SerializeField]private ShopItemScriptableObjectList shopItemScriptableObject;
-    [SerializeField]private ShopView shopView;
+        private ShopItemScriptableObjectList shopItemScriptableObject;
+        private ShopView shopView;
+        private ItemController itemController;
 
 
-    public ShopService(ShopItemScriptableObjectList shopItemScriptableObjectList,ShopView shopView)
+    public ShopService(ShopItemScriptableObjectList shopItemScriptableObjectList,ShopView shopView,ItemController itemController)
     {
+        this.itemController = itemController;
         this.shopItemScriptableObject = shopItemScriptableObjectList;
         this.shopView = shopView;
         initializeVariables();
@@ -19,7 +21,7 @@ public class ShopService
     private void  initializeVariables()
     {
         ShopModel shopModel = new ShopModel(shopItemScriptableObject);
-        ShopController shopController = new ShopController(shopModel,shopView); 
+        ShopController shopController = new ShopController(shopModel,shopView,itemController); 
     }
     
 }

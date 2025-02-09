@@ -6,11 +6,13 @@ public class ShopController
 {
     private ShopModel shopModel;
     private ShopView shopView;
+    private ItemController itemController;
 
-    public ShopController(ShopModel shopModel, ShopView shopView)
+    public ShopController(ShopModel shopModel, ShopView shopView,ItemController itemController)
     {
         this.shopModel = shopModel;
         this.shopView = shopView;
+        this.itemController = itemController;
 
         EventService.Instance.OnItemChange.AddListener(DisplayItems);
 
@@ -25,7 +27,6 @@ public class ShopController
 
     public void DisplayItems(ItemType itemType)
     {
-        List<ItemScriptableObject> filterItems = shopModel.GetItemByType(itemType);
-        shopView.DisplayItems(filterItems);
+        itemController.DisplayItem(itemType, shopView.itemPrefab, shopView.itemTransform);
     }
 }

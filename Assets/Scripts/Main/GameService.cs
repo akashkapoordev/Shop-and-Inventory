@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Gameservice : MonoBehaviour
 {
-    [SerializeField] ShopItemScriptableObjectList shopItems;
-    [SerializeField] ShopView shopView;
+    [SerializeField] private ShopItemScriptableObjectList shopItems;
+    [SerializeField] private ShopView shopView;
+    [SerializeField] private List<ItemScriptableObject> items;
+    [SerializeField] private ItemView itemView;
 
     private void Start()
     {
@@ -15,6 +17,8 @@ public class Gameservice : MonoBehaviour
 
     private void createService()
     {
-        ShopService shopService = new ShopService(shopItems, shopView);
+        
+        ItemService itemService = new ItemService(items, itemView);
+        ShopService shopService = new ShopService(shopItems, shopView,itemService.itemController);
     }
 }

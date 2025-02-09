@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class ShopView : MonoBehaviour
 {
-    [SerializeField] GameObject itemPrefab;
-    [SerializeField] Transform itemTransform;
+    public GameObject itemPrefab;
+    public Transform itemTransform;
     [SerializeField] Button materialButton;
     [SerializeField] Button weaponButton;
     [SerializeField] Button consumablesButton;
@@ -24,17 +24,17 @@ public class ShopView : MonoBehaviour
     {
         
     }
-    public void DisplayItems(List<ItemScriptableObject> items)
-    {
-        foreach (Transform child in itemTransform)
-        {
-            Destroy(child.gameObject);
-        }
-        foreach (var item in items)
-        {
-            GameObject itemObject = Instantiate(itemPrefab,itemTransform);
-            itemObject.GetComponent<Image>().sprite = item.Icon;
-        }
+    //public void DisplayItems(List<ItemScriptableObject> items)
+    //{
+    //    foreach (Transform child in itemTransform)
+    //    {
+    //        Destroy(child.gameObject);
+    //    }
+    //    foreach (var item in items)
+    //    {
+    //        GameObject itemObject = Instantiate(itemPrefab,itemTransform);
+    //        itemObject.GetComponent<Image>().sprite = item.Icon;
+    //    }
 
-    }
+    //}
 }
