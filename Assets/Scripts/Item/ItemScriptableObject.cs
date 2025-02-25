@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public enum ItemType
 {
@@ -20,15 +17,15 @@ public enum RarityType
     Legendary
 }
 
-[CreateAssetMenu (fileName = "ItemScriptableObject",menuName ="ItemScriptableObject")]
+[CreateAssetMenu(fileName = "Item", menuName = "Shop/Item")]
 public class ItemScriptableObject : ScriptableObject
 {
-    public ItemType Type;
-    public Sprite Icon;
-    public string ItemDescription;
+    public string itemName;
+    public string itemDescription;
     public int buyingPrice;
     public int sellingPrice;
-    public int weight;
-    public int rarity;
-    public int Quantity;
+    public int quantity;
+    public ItemType itemType;
+    public RarityType rarity;
+    public Sprite icon;
 }

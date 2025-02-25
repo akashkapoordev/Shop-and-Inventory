@@ -1,32 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ShopController
 {
-    private ShopModel shopModel;
     private ShopView shopView;
+    private ShopModel shopModel;
     private ItemController itemController;
 
-    public ShopController(ShopModel shopModel, ShopView shopView,ItemController itemController)
+    public ShopController(ShopModel shopModel, ShopView shopView)
     {
         this.shopModel = shopModel;
         this.shopView = shopView;
-        this.itemController = itemController;
 
-        EventService.Instance.OnItemChange.AddListener(DisplayItems);
-
-        DisplayItems(ItemType.Materials);
+        DisplayShopItems(ItemType.Materials);
     }
+    
 
-    ~ShopController()
+    public void DisplayShopItems(ItemType itemType)
     {
-        EventService.Instance.OnItemChange.RemoveListener(DisplayItems);
+        var items = shopModel.GetItemsByType(itemType);
+        var itemModels = new List<ItemModel>();
 
+        foreach (var item in items)
+        {
+            itemModels.Add(new ItemModel(item));
+        }
+
+        shopView.DisplayItems(itemModels);
     }
 
-    public void DisplayItems(ItemType itemType)
-    {
-        itemController.DisplayItem(itemType, shopView.itemPrefab, shopView.itemTransform);
-    }
+
+
+
 }

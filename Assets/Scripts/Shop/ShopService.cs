@@ -1,27 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class ShopService 
+public class ShopService
 {
-        private ShopItemScriptableObjectList shopItemScriptableObject;
-        private ShopView shopView;
-        private ItemController itemController;
 
-
-    public ShopService(ShopItemScriptableObjectList shopItemScriptableObjectList,ShopView shopView,ItemController itemController)
+    public ShopService(List<ItemScriptableObject> items, ShopView shopView)
     {
-        this.itemController = itemController;
-        this.shopItemScriptableObject = shopItemScriptableObjectList;
-        this.shopView = shopView;
-        initializeVariables();
-    }
+        ShopModel shopModel = new ShopModel(items);
+        ShopController shopController = new ShopController(shopModel, shopView);
 
-
-    private void  initializeVariables()
-    {
-        ShopModel shopModel = new ShopModel(shopItemScriptableObject);
-        ShopController shopController = new ShopController(shopModel,shopView,itemController); 
     }
-    
 }

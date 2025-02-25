@@ -1,40 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System.Collections.Generic;
+
 
 public class ShopView : MonoBehaviour
 {
+    public Transform itemListPanel; 
     public GameObject itemPrefab;
-    public Transform itemTransform;
-    [SerializeField] Button materialButton;
-    [SerializeField] Button weaponButton;
-    [SerializeField] Button consumablesButton;
-    [SerializeField] Button treasureButton;
+    public GameObject panelItem;
+     ItemView itemView;   
 
-    private void OnEnable()
-    {
-        materialButton.onClick.AddListener(() => EventService.Instance.OnItemChange.InvokeEvent(ItemType.Materials));
-        weaponButton.onClick.AddListener(() => EventService.Instance.OnItemChange.InvokeEvent(ItemType.Weapons));
-        consumablesButton.onClick.AddListener(() => EventService.Instance.OnItemChange.InvokeEvent(ItemType.Consumables));
-        treasureButton.onClick.AddListener(() => EventService.Instance.OnItemChange.InvokeEvent(ItemType.Treasure));
-    }
-    private void Start()
-    {
-        
-    }
-    //public void DisplayItems(List<ItemScriptableObject> items)
-    //{
-    //    foreach (Transform child in itemTransform)
-    //    {
-    //        Destroy(child.gameObject);
-    //    }
-    //    foreach (var item in items)
-    //    {
-    //        GameObject itemObject = Instantiate(itemPrefab,itemTransform);
-    //        itemObject.GetComponent<Image>().sprite = item.Icon;
-    //    }
 
-    //}
+    public void DisplayItems(List<ItemModel> items)
+    { 
+
+
+        foreach (Transform child in itemListPanel)
+        {
+            Destroy(child.gameObject); 
+        }
+
+        foreach (var item in items)
+        {
+            GameObject itemObject = Instantiate(itemPrefab, itemListPanel);  
+            itemObject.GetComponentInChildren<TextMeshProUGUI>().text = item.Quantity.ToString();  
+            itemObject.GetComponent<Image>().sprite = item.Icon;
+
+
+            Button itemButton = itemObject.GetComponent<Button>();
+            itemView = itemObject.GetComponent<ItemView>();
+            itemButton.onClick.AddListener(() => OnItemSelected(item));
+        }
+    }
+
+
+    public void OnItemSelected(ItemModel item)
+    {
+        panelItem.SetActive(true);
+        ItemView panelListItem = panelItem.GetComponent<ItemView>();
+
+        panelListItem.DisplayItemDetails(item);
+    }
 }

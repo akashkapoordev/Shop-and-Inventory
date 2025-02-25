@@ -1,18 +1,21 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class ShopModel
 {
-    private ShopItemScriptableObjectList shopItems;
+    private List<ItemScriptableObject> availableItems;
 
-    public ShopModel(ShopItemScriptableObjectList shopItems)
+    public ShopModel(List<ItemScriptableObject> availableItems)
     {
-        this.shopItems = shopItems;
+        this.availableItems = availableItems;
     }
 
-    public List<ItemScriptableObject> GetItemByType(ItemType itemType)
+    public List<ItemScriptableObject> GetItemsByType(ItemType itemType)
     {
-        return shopItems.shopItems.FindAll(item => item.Type == itemType);
+        return availableItems.FindAll(item => item.itemType == itemType);
+    }
+
+    public ItemScriptableObject GetItemByName(string itemName)
+    {
+        return availableItems.Find(item => item.itemName == itemName);
     }
 }

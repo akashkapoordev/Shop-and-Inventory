@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: ShopSOList
   m_EditorClassIdentifier: 
   shopItems:
-  - {fileID: 11400000, guid: cb239dbf59e3e4f439637708a3d09d7f, type: 2}
-  - {fileID: 11400000, guid: 4ddb6ebead02f7449b8b856b1855065b, type: 2}
-  - {fileID: 11400000, guid: 5cb23c9f009fb4f41aa5946390dbcb46, type: 2}
-  - {fileID: 11400000, guid: 8f8530e5479bc1a4494a6219357280e6, type: 2}
+  - {fileID: 11400000, guid: 4fe407b0947dc3242b8f16c12cf1129c, type: 2}
+  - {fileID: 11400000, guid: e9ae9973585f27648b2e5729f1ff4799, type: 2}
+  - {fileID: 11400000, guid: 08f7ef6c5e8959d4186a235b6ac7672d, type: 2}
