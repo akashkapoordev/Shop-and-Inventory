@@ -12,10 +12,10 @@ public class ItemView : MonoBehaviour
 
     public void DisplayItemDetails(ItemModel item)
     {
-        //itemNameText.text = item.ItemName;
-        //descriptionText.text = item.ItemDescription;
-        //priceText.text = $"Price: {item.BuyingPrice}";
-        //quantityText.text = $"Quantity: {item.Quantity}";
+        itemNameText.text = item.ItemName;
+        descriptionText.text = item.ItemDescription;
+        priceText.text = $"Price: {item.BuyingPrice}";
+        quantityText.text = $"Quantity: {item.Quantity}";
         itemIcon.sprite = item.Icon;
     }
 

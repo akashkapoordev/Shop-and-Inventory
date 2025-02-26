@@ -25,7 +25,7 @@ public class ShopView : MonoBehaviour
         {
             GameObject itemObject = Instantiate(itemPrefab, itemListPanel);  
             itemObject.GetComponentInChildren<TextMeshProUGUI>().text = item.Quantity.ToString();  
-            itemObject.GetComponent<Image>().sprite = item.Icon;
+            itemObject.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = item.Icon;
 
 
             Button itemButton = itemObject.GetComponent<Button>();
