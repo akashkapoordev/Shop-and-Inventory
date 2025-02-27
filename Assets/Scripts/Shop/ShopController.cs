@@ -12,7 +12,9 @@ public class ShopController
         this.shopModel = shopModel;
         this.shopView = shopView;
 
-        DisplayShopItems(ItemType.Materials);
+        DisplayShopItems(ItemType.Weapons);
+
+        ServiceLocator.Instance.eventService.OnItemChange.AddListener(DisplayShopItems);
     }
     
 
@@ -27,6 +29,12 @@ public class ShopController
         }
 
         shopView.DisplayItems(itemModels);
+    }
+
+
+    ~ShopController()
+    {
+        ServiceLocator.Instance.eventService.OnItemChange.RemoveListener(DisplayShopItems);
     }
 
 

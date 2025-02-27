@@ -9,9 +9,23 @@ public class ShopView : MonoBehaviour
     public Transform itemListPanel; 
     public GameObject itemPrefab;
     public GameObject panelItem;
-     ItemView itemView;   
+    private ItemView itemView;
 
 
+    [SerializeField] Button weaponButton;
+    [SerializeField] Button materialButton;
+    [SerializeField] Button consumableButton;
+    [SerializeField] Button treasureButton;
+
+
+
+    private void Start()
+    {
+        weaponButton.onClick.AddListener(() => {ServiceLocator.Instance.eventService.OnItemChange.InvokeEvent(ItemType.Weapons); });
+        materialButton.onClick.AddListener(() => {ServiceLocator.Instance.eventService.OnItemChange.InvokeEvent(ItemType.Materials); });
+        consumableButton.onClick.AddListener(() => {ServiceLocator.Instance.eventService.OnItemChange.InvokeEvent(ItemType.Consumables); });
+        treasureButton.onClick.AddListener(() => {ServiceLocator.Instance.eventService.OnItemChange.InvokeEvent(ItemType.Treasure); });
+    }
     public void DisplayItems(List<ItemModel> items)
     { 
 

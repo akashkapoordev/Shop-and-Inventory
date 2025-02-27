@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class ShopService
+public class ShopService : GenericMonoSingleton<ShopService>
 {
 
     public ShopService(List<ItemScriptableObject> items, ShopView shopView)
@@ -9,4 +9,5 @@ public class ShopService
         ShopController shopController = new ShopController(shopModel, shopView);
 
     }
+
 }
