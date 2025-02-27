@@ -1,4 +1,4 @@
-public class EventService : GenericMonoSingleton<EventService>
+public class EventService
 {
 
     public EventController<ItemType> OnItemChange;

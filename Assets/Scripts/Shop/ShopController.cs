@@ -14,6 +14,7 @@ public class ShopController
 
         DisplayShopItems(ItemType.Weapons);
 
+
         ServiceLocator.Instance.eventService.OnItemChange.AddListener(DisplayShopItems);
     }
     
@@ -29,6 +30,11 @@ public class ShopController
         }
 
         shopView.DisplayItems(itemModels);
+    }
+
+    public void Buyitem(ItemModel itemModel)
+    {
+
     }
 
 
